@@ -103,6 +103,7 @@ public class GTaskClient {
     }
 
     public static synchronized GTaskClient getInstance() {
+        // 单例模式，获取GTaskClient的唯一实例
         if (mInstance == null) {
             mInstance = new GTaskClient();
         }

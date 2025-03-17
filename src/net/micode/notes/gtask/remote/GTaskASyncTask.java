@@ -33,6 +33,7 @@ public class GTaskASyncTask extends AsyncTask<Void, String, Integer> {
 
     private static int GTASK_SYNC_NOTIFICATION_ID = 5234235;
 
+    // 定义同步任务完成时的回调接口
     public interface OnCompleteListener {
         void onComplete();
     }

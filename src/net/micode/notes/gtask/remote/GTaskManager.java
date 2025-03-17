@@ -51,6 +51,7 @@ import java.util.Map;
 public class GTaskManager {
     private static final String TAG = GTaskManager.class.getSimpleName();
 
+    // 定义同步状态常量
     public static final int STATE_SUCCESS = 0;
 
     public static final int STATE_NETWORK_ERROR = 1;
@@ -100,6 +101,7 @@ public class GTaskManager {
     }
 
     public static synchronized GTaskManager getInstance() {
+        // 单例模式，获取GTaskManager的唯一实例
         if (mInstance == null) {
             mInstance = new GTaskManager();
         }
@@ -791,6 +793,7 @@ public class GTaskManager {
     }
 
     public String getSyncAccount() {
+        // 获取同步账户的名称
         return GTaskClient.getInstance().getSyncAccount().name;
     }
 
