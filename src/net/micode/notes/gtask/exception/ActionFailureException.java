@@ -16,6 +16,7 @@
 
 package net.micode.notes.gtask.exception;
 
+// 自定义异常类，用于处理任务操作失败的情况
 public class ActionFailureException extends RuntimeException {
     private static final long serialVersionUID = 4425249765923293627L;
 

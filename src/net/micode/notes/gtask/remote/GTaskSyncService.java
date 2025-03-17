@@ -44,6 +44,7 @@ public class GTaskSyncService extends Service {
 
     private void startSync() {
         if (mSyncTask == null) {
+            // 创建并执行同步任务
             mSyncTask = new GTaskASyncTask(this, new GTaskASyncTask.OnCompleteListener() {
                 public void onComplete() {
                     mSyncTask = null;
@@ -57,6 +58,7 @@ public class GTaskSyncService extends Service {
     }
 
     private void cancelSync() {
+        // 取消同步任务
         if (mSyncTask != null) {
             mSyncTask.cancelSync();
         }
@@ -106,6 +108,7 @@ public class GTaskSyncService extends Service {
     }
 
     public static void startSync(Activity activity) {
+        // 设置活动上下文并启动同步服务
         GTaskManager.getInstance().setActivityContext(activity);
         Intent intent = new Intent(activity, GTaskSyncService.class);
         intent.putExtra(GTaskSyncService.ACTION_STRING_NAME, GTaskSyncService.ACTION_START_SYNC);
@@ -113,6 +116,7 @@ public class GTaskSyncService extends Service {
     }
 
     public static void cancelSync(Context context) {
+        // 启动取消同步服务
         Intent intent = new Intent(context, GTaskSyncService.class);
         intent.putExtra(GTaskSyncService.ACTION_STRING_NAME, GTaskSyncService.ACTION_CANCEL_SYNC);
         context.startService(intent);

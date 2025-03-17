@@ -106,22 +106,23 @@ public class TaskList extends Node {
     public void setContentByRemoteJSON(JSONObject js) {
         if (js != null) {
             try {
-                // id
+                // 从JSON对象中获取任务ID
                 if (js.has(GTaskStringUtils.GTASK_JSON_ID)) {
                     setGid(js.getString(GTaskStringUtils.GTASK_JSON_ID));
                 }
 
-                // last_modified
+                // 从JSON对象中获取最后修改时间
                 if (js.has(GTaskStringUtils.GTASK_JSON_LAST_MODIFIED)) {
                     setLastModified(js.getLong(GTaskStringUtils.GTASK_JSON_LAST_MODIFIED));
                 }
 
-                // name
+                // 从JSON对象中获取任务名称
                 if (js.has(GTaskStringUtils.GTASK_JSON_NAME)) {
                     setName(js.getString(GTaskStringUtils.GTASK_JSON_NAME));
                 }
 
             } catch (JSONException e) {
+                // 处理JSON解析异常
                 Log.e(TAG, e.toString());
                 e.printStackTrace();
                 throw new ActionFailureException("fail to get tasklist content from jsonobject");

@@ -413,6 +413,7 @@ public class SqlNote {
     }
 
     public void setGtaskId(String gid) {
+        // 将任务ID存储到差异笔记值中
         mDiffNoteValues.put(NoteColumns.GTASK_ID, gid);
     }
 
@@ -477,29 +478,4 @@ public class SqlNote {
                     });
                 } else {
                     result = mContentResolver.update(Notes.CONTENT_NOTE_URI, mDiffNoteValues, "("
-                            + NoteColumns.ID + "=?) AND (" + NoteColumns.VERSION + "<=?)",
-                            new String[] {
-                                    String.valueOf(mId), String.valueOf(mVersion)
-                            });
-                }
-                if (result == 0) {
-                    Log.w(TAG, "there is no update. maybe user updates note when syncing");
-                }
-            }
-
-            if (mType == Notes.TYPE_NOTE) {
-                for (SqlData sqlData : mDataList) {
-                    sqlData.commit(mId, validateVersion, mVersion);
-                }
-            }
-        }
-
-        // refresh local info
-        loadFromCursor(mId);
-        if (mType == Notes.TYPE_NOTE)
-            loadDataContent();
-
-        mDiffNoteValues.clear();
-        mIsCreate = false;
-    }
-}
+                            + NoteColumns.ID + "=?) AND ("
