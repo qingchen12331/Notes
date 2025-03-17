@@ -7,3 +7,6 @@ project.properties
 .settings/
 .classpath
 .project
+
+.idea/
+.vscode/
