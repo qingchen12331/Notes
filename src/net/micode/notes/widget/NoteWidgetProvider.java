@@ -44,7 +44,6 @@ public abstract class NoteWidgetProvider extends AppWidgetProvider {
     public static final int COLUMN_SNIPPET      = 2;
 
     private static final String TAG = "NoteWidgetProvider";
-
     @Override
     public void onDeleted(Context context, int[] appWidgetIds) {
         ContentValues values = new ContentValues();
